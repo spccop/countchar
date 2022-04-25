@@ -1,0 +1,39 @@
+Exp2.l file:
+%{
+int sentences=0, words=0, c_l=0, s_l=0, num=0, spl_chr=0, total=0, sp=0, tc=0;
+%}
+letter [a-zA-Z]
+%%
+\n {sentences++;}
+[' '] {sp++;}
+[a-z] {s_l++;}
+[A-Z] {c_l++;}
+{letter}+ {words++;}
+\t {tc++;}
+[0-9]+ num++;
+. spl_chr++;
+%%
+
+int main ()
+{
+yyin=fopen("abc.txt", "r");
+yylex();
+total= sentences+words+c_l+s_l+spl_chr+num;
+printf("\n THE FILE COUNTING...");
+printf("\n sentences : %d", sentences);
+printf("\n words : %d", words);
+printf("\n num : %d", num);
+printf("\n capital letter : %d", c_l);
+printf("\n small letter : %d", s_l);
+printf("\nNo. of tabs=%d", tc);
+printf("\n total : %d", total);
+printf("\n spaces : %d", sp);
+}
+int yywrap ()
+{
+return 1;
+}
+abc.text file:
+ab cD EF
+as A D 98 11
+! *$%
