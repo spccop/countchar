@@ -37,3 +37,7 @@ abc.text file:
 ab cD EF
 as A D 98 11
 ! *$%
+
+flex name.l
+gcc lex.yy.c
+a.exe
